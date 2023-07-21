@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { selectBooks } from '../store/books.selector';
+import { invokeBooksAPI } from '../store/books.action';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +17,10 @@ export class HomeComponent  implements OnInit{
     
   }
 
+  books$ = this.store.pipe(select(selectBooks))
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
+  this.store.dispatch(invokeBooksAPI());
   }
 
 }
