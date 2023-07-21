@@ -10,4 +10,9 @@ export const booksFetchAPISucess = createAction(
     "[Books API] books fetch api sucess",
     props<{allBooks:Book[]}>()
     )
+
+    export const invokeSaveBookAPI = createAction(
+        "[Books API] invoke save book API",
+        props<{allBooks:Book[]}>()
+        )
     
