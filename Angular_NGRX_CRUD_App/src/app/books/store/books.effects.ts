@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions,createEffect, ofType } from "@ngrx/effects";
 import { BooksService } from "../books.service";
-import { invokeBooksAPI } from "./books.action";
+import { booksFetchAPISucess, invokeBooksAPI } from "./books.action";
 import { map, switchMap } from "rxjs";
 
 @Injectable()
@@ -15,8 +15,9 @@ export class BooksEffects {
         switchMap(() => {
             return this.bookService.get()
             .pipe(
-                map((data) =>  )
-            )
+                map((data) =>  booksFetchAPISucess({allBooks : data}))
+            );
         })
     )
+    );
 }
