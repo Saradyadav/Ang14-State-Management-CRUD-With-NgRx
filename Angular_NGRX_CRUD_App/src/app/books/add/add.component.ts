@@ -17,14 +17,14 @@ export class AddComponent implements OnInit{
       author : '',
       title :'',
       cost : 0
-    }
+    };
   
   ngOnInit(): void {
   //  throw new Error('Method not implemented.');
   }
 
   save(){
-     this.store.dispatch(invokeSaveBookAPI())
+     this.store.dispatch(invokeSaveBookAPI({payload: {...this.bookForm}}));
   }
   
 
