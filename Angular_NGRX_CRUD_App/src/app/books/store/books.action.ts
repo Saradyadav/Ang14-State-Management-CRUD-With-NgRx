@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { Book } from "./book";
+import { Book } from './book';
 
 export const invokeBooksAPI = createAction(
     "[Books API] invoke books Fetch API"
@@ -18,6 +18,6 @@ export const invokeSaveBookAPI = createAction(
 
 export const saveBookAPISucess = createAction(
     "[Books API] save book API sucess",
-    props<{ responce: Book}>()
+    props<{ response: Book}>()
 )
 
