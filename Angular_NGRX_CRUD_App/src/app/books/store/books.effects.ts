@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions,createEffect, ofType } from "@ngrx/effects";
 import { BooksService } from "../books.service";
-import { booksFetchAPISucess, invokeBooksAPI, invokeSaveBookAPI, invokeUpdateBookAPI, saveBookAPISucess } from "./books.action";
+import { booksFetchAPISucess, invokeBooksAPI, invokeSaveBookAPI, invokeUpdateBookAPI, saveBookAPISucess, updateBookAPISuccess } from "./books.action";
 import { EMPTY, map, switchMap, withLatestFrom } from "rxjs";
 import { Store, select } from "@ngrx/store";
 import { Appstate } from "src/app/shared/store/appstate";
@@ -62,7 +62,7 @@ export class BooksEffects {
                 .pipe(map((data) => {
                     this.appStore.dispatch(
                         setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:'success'}}))
-                    return saveBookAPISucess({response: data })
+                    return updateBookAPISuccess({response: data })
                 }
                 ));
                  })

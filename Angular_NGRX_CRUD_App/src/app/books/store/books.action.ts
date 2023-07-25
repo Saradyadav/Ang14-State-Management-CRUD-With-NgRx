@@ -23,6 +23,10 @@ export const saveBookAPISucess = createAction(
 
 export const invokeUpdateBookAPI = createAction(
     "[Books API] invoke update book API",
-    props<{ response: Book}>()
+    props<{ payload: Book}>()
 )
 
+export const updateBookAPISuccess = createAction(
+    "[Books API]  update book API Success",
+    props<{ response: Book}>()
+)
