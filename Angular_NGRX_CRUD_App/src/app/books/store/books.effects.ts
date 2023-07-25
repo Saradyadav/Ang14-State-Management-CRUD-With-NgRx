@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions,createEffect, ofType } from "@ngrx/effects";
 import { BooksService } from "../books.service";
-import { booksFetchAPISucess, invokeBooksAPI, invokeSaveBookAPI, invokeUpdateBookAPI, saveBookAPISucess, updateBookAPISuccess } from "./books.action";
+import { booksFetchAPISucess, deleteBookAPISuccess, invokeBooksAPI, invokeDeleteBookAPI, invokeSaveBookAPI, invokeUpdateBookAPI, saveBookAPISucess, updateBookAPISuccess } from "./books.action";
 import { EMPTY, map, switchMap, withLatestFrom } from "rxjs";
 import { Store, select } from "@ngrx/store";
 import { Appstate } from "src/app/shared/store/appstate";
@@ -62,12 +62,34 @@ export class BooksEffects {
                 .pipe(map((data) => {
                     this.appStore.dispatch(
                         setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:'success'}}))
-                    return updateBookAPISuccess({response: data })
+                    return updateBookAPISuccess({response: data });
                 }
                 ));
                  })
             )
             );
+
+
+             //delete books
+             deleteBooks$ = createEffect(() =>
+             this.actions$.pipe(
+              ofType(invokeDeleteBookAPI), 
+              switchMap((action) => {
+                   this.appStore.dispatch(
+                      setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:''}}))
+                  return this.bookService
+                  .delete(action.id)
+                  .pipe(map((data) => {
+                      this.appStore.dispatch(
+                          setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:'success'},
+                        })
+                        );
+                      return deleteBookAPISuccess({id: action.id });
+                  }
+                  ));
+                   })
+              )
+              );
          }
 
 

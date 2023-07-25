@@ -19,4 +19,9 @@ export class BooksService {
   update(payload:Book){
     return this.http.put<Book>('http://localhost:3000/books/${payload.id}',payload);
   }
+
+  delete(id : number){
+    return this.http.delete('http://localhost:3000/books/${id}'); 
+  }
+
 }
