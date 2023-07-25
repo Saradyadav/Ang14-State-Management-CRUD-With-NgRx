@@ -4,13 +4,15 @@ import { BooksService } from "../books.service";
 import { booksFetchAPISucess, invokeBooksAPI, invokeSaveBookAPI, saveBookAPISucess } from "./books.action";
 import { map, switchMap } from "rxjs";
 import { Store } from "@ngrx/store";
+import { Appstate } from "src/app/shared/store/appstate";
+import { setAPIStatus } from "src/app/shared/store/app.action";
 
 @Injectable()
 export class BooksEffects {
     constructor(
     private actions$:Actions,
     private bookService:BooksService,
-    private store: Store){}
+    private appStore: Store<Appstate>){}
 
     loadAllBooks$ = createEffect(() =>
     this.actions$.pipe(
@@ -22,16 +24,22 @@ export class BooksEffects {
     )
     );
 
-    saveNewBooks$ = createEffect(() => 
-        
+    saveNewBooks$ = createEffect(() =>
            this.actions$.pipe(
             ofType(invokeSaveBookAPI), 
             switchMap((action) => {
+                // this.appStore.dispatch(
+                // setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:''} })
+                // );
                 return this.bookService
                 .create(action.payload)
-                .pipe(map((data) => saveBookAPISucess({response: data })));
+                .pipe(map((data) => 
+                    // this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponseMessage:'',apiStatus:'success'},
+                    //  return 
+                    saveBookAPISucess({response: data })));
             })
-           )
+            )
+               
         );
 }
 

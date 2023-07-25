@@ -7,5 +7,5 @@ export interface Book {
 
 export interface BookState{
     books : Book[],
-    apis
+    
 }
