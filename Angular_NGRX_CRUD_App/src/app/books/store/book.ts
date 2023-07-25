@@ -7,5 +7,7 @@ export interface Book {
 
 export interface BookState{
     books : Book[],
+    // apiStatus:string;
+    // apiResponse:string;
     
 }
