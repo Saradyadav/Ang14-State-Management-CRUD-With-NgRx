@@ -1,0 +1,29 @@
+.container {
+    margin-top: 2rem;
+  }
+  
+  .col-md4 {
+    margin-left: 33.333333%;
+  }
+  
+  .btn-dark {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .card-title {
+    margin-bottom: .75rem;
+  }
+  
+  .list-group-item {
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+  }
+  

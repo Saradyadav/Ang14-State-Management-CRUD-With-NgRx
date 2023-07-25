@@ -1,5 +1,5 @@
 <div class="container">
-    <legend>Add A New Book</legend>
+    <legend>Update Book</legend>
     <div class="mb-3">
         <label for="txtName" class="form-label">Name of the Book</label>
         <input type="text" [(ngModel)] = "bookForm.title" class="form-control" id="txtName" placeholder="Books Name">
@@ -15,5 +15,5 @@
         <input type="number" [(ngModel)] = "bookForm.cost" class="form-control" id="txtCost" placeholder="Cost">
     </div>
 
-    <button type = "button" class="btn btn-dark" (click) = "save()">Create</button>
+    <button type = "button" class="btn btn-dark" (click) = "update()">Update</button>
 </div>
