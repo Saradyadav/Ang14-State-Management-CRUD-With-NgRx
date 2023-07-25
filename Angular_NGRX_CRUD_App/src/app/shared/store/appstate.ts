@@ -1,5 +1,5 @@
 export interface Appstate {
-    apiStatus : '';
-    apiResposeMessage: ''
+    apiStatus : string;
+    apiResponseMessage: string; 
 }
 
