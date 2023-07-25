@@ -21,3 +21,8 @@ export const saveBookAPISucess = createAction(
     props<{ response: Book}>()
 )
 
+export const invokeUpdateBookAPI = createAction(
+    "[Books API] invoke update book API",
+    props<{ response: Book}>()
+)
+
