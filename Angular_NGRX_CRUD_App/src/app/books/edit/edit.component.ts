@@ -66,4 +66,18 @@ export class EditComponent implements OnInit {
        }
       });
     }
+
+  //   save(){
+  //     this.store.dispatch(invokeSaveBookAPI({payload: {...this.bookForm}}));
+  //     let appStatus$ = this.appStore.pipe(select(selectAppState))
+  //     appStatus$.subscribe((data)=>{
+  //      if(data.apiStatus === 'success')
+  //      {
+  //        this.appStore.dispatch(
+  //          setAPIStatus({apiStatus:{ apiStatus:'', apiResponseMessage:''}})
+  //        );
+  //          this.router.navigate(['/']);
+  //      }
+  //     });
+  //  }
 }
